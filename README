@@ -1,6 +1,6 @@
 == Zeemote + WebSocket + WebGL(three.js) ==
 
-edy555@gmail.com
+edy555 _at_ gmail.com
 2/13/2012
 
 * 概要
@@ -45,7 +45,7 @@ Zeemoteの電源が切れている場合、エラーが発生するので、LED�
 
 Chromeでindex.htmlを開くとトーラスが表示されます。
 WebSocketサーバとの接続が成功している場合は、サーバ側に"connected"と
-表示され、スティック操作で角度がぐりぐり変化します。
+表示され、Zeemoteのスティック操作で角度がぐりぐり変化します。
 
 
 * 注意
