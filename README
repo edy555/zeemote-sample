@@ -1,0 +1,65 @@
+== Zeemote + WebSocket + WebGL(three.js) ==
+
+edy555@gmail.com
+2/13/2012
+
+* 概要
+
+Zeemote, WebSocket, three.jsを使ったサンプルです。
+MacBook Proで動作します。その他のプラットフォームの場合は、
+Bluetoothとの接続部分に改造が必要だと思います。
+
+ZeemoteはプロファイルとしてSPPを持ったBluetoothデバイスです。
+Zeemoteを操作すると、バイナリメッセージを送ってきます。
+メッセージフォーマットはシンプルですので、これをRuby+EventMachine
+によるサーバにより解釈して、WebSocketのメッセージとして送信します。
+ブラウザでは、WebGL+Three.jsによりモデルを表示し、スティック操作で
+動くようにしてみました。
+
+
+* 準備
+
+$ gem install eventmachine
+$ gem install em-websocket
+
+
+* ペアリング
+
+ZeemoteのDボタン(親指)を長押しして電源を入れる(LEDが点滅する)
+Set Up Bluetooth Device... からBluetooth Setup Assistantを
+開き、"Zeemote JS1 H"を選択してペアリングする。
+ペアリングが完了すると、/dev/tty.ZeemoteJS1H-ZeemoteSPP という
+デバイスノードが作られているはずです。
+
+
+* サーバを起動する
+
+$ ruby ./server.rb
+
+Zeemoteとの接続が確立すると、スティックやボタンを操作するとメッセージが
+流れていきます。
+Zeemoteの電源が切れている場合、エラーが発生するので、LEDの点滅を確認すること。
+
+
+* ページを開く
+
+Chromeでindex.htmlを開くとトーラスが表示されます。
+WebSocketサーバとの接続が成功している場合は、サーバ側に"connected"と
+表示され、スティック操作で角度がぐりぐり変化します。
+
+
+* 注意
+
+BluetoothならびにWebSocketの再接続を実装していないので、Zeemoteの電源、
+サーバの起動、ページの表示(リロード)の順序で行う必要があります。
+
+
+* 参考
+
+#devfestxj「WebGL & three.js 最新の話題　ライブラリ紹介」講演スライド
+http://webos-goodies.jp/attachments/devfestx_sapporo_2012_webgl
+
+橋本商会 EventMachine::WebSocketでチャットを作る
+http://shokai.org/blog/archives/5434
+
+EOF
