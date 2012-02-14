@@ -9,8 +9,8 @@ Zeemote, WebSocket, three.jsを使ったサンプルです。
 MacBook Proで動作します。その他のプラットフォームの場合は、
 Bluetoothとの接続部分に改造が必要だと思います。
 
-ZeemoteはプロファイルとしてSPPを持ったBluetoothデバイスです。
-Zeemoteを操作すると、バイナリメッセージを送ってきます。
+Zeemote(ジョイスティックモード)はプロファイルとしてSPPを持ったBluetooth
+デバイスです。Zeemoteを操作すると、バイナリメッセージを送ってきます。
 メッセージフォーマットはシンプルですので、これをRuby+EventMachine
 によるサーバにより解釈して、WebSocketのメッセージとして送信します。
 ブラウザでは、WebGL+Three.jsによりモデルを表示し、スティック操作で
@@ -30,6 +30,9 @@ Set Up Bluetooth Device... からBluetooth Setup Assistantを
 開き、"Zeemote JS1 H"を選択してペアリングする。
 ペアリングが完了すると、/dev/tty.ZeemoteJS1H-ZeemoteSPP という
 デバイスノードが作られているはずです。
+もしZeemoteが別のモード(キーボードもしくはマウスモード)になっている
+場合は、電源を入れる際にCボタンを押しながら、Dボタンを長押ししてください。
+詳しくは取り扱い説明書を参照してください。
 
 
 * サーバを起動する
@@ -55,6 +58,9 @@ BluetoothならびにWebSocketの再接続を実装していないので、Zeemo
 
 
 * 参考
+
+Zeemote JS1 H 取扱説明書
+http://www.aplix.co.jp/zeemote/jp/js1h/Zeemote-JS1H-manual-JP.pdf
 
 #devfestxj「WebGL & three.js 最新の話題　ライブラリ紹介」講演スライド
 http://webos-goodies.jp/attachments/devfestx_sapporo_2012_webgl
